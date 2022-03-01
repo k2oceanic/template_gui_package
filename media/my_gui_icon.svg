@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1000"
+   height="1000"
+   viewBox="0 0 264.58333 264.58333"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (76b9e6a115, 2022-02-25)"
+   sodipodi:docname="my_gui_icon.svg"
+   inkscape:export-filename="/home/kris/ros/aura_ws/src/template_gui_package/media/my_gui_icon.png"
+   inkscape:export-xdpi="50"
+   inkscape:export-ydpi="50"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="0.98305308"
+     inkscape:cx="-107.82734"
+     inkscape:cy="582.36937"
+     inkscape:window-width="3768"
+     inkscape:window-height="2096"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="opacity:1;fill:#4de289;stroke-width:4.88896;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       id="path850"
+       cx="132.38446"
+       cy="132.16524"
+       r="132.21251" />
+    <text
+       xml:space="preserve"
+       style="font-size:95.8313px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;stroke-width:7.98596"
+       x="80.609596"
+       y="111.31387"
+       id="text4066"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:7.98596"
+         x="80.609596"
+         y="111.31387"
+         id="tspan5788">My</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:95.8313px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;stroke-width:7.98596"
+       x="166.57697"
+       y="219.76682"
+       id="text4066-3"><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:7.98596"
+         x="166.57697"
+         y="219.76682"
+         id="tspan5788-6">GUI</tspan></text>
+  </g>
+</svg>
