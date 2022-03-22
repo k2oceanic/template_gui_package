@@ -1,0 +1,4 @@
+<launch>
+  <node name="hello_gui_node" pkg="template_gui_package" type="hello_gui_node" output="screen"/>
+  <node name="talker" pkg="template_gui_package" type="talker" output="screen"/>
+</launch>
