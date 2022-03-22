@@ -20,6 +20,15 @@
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
 
+  <build_depend>qtbase5-dev</build_depend>
+
+
+  <exec_depend>libqt5-core</exec_depend>
+  <exec_depend>libqt5-gui</exec_depend>
+  <exec_depend>libqt5-widgets</exec_depend>
+
+
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
