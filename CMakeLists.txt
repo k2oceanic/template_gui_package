@@ -23,10 +23,10 @@
 
 cmake_minimum_required(VERSION 2.8.3)
 
-get_filename_component(PACKAGE_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
-message("Creating Package: ${PACKAGE_NAME}")
+#get_filename_component(PACKAGE_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+#message("Creating Package: ${PACKAGE_NAME}")
 
-project(${PACKAGE_NAME})  ## this package name is the name of the directory this cmake file is in
+project(template_gui_package)  ## this package name is the name of the directory this cmake file is in
 
 
 ################################
