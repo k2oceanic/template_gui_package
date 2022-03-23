@@ -19,20 +19,16 @@
 
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
-
-  <build_depend>qtbase5-dev</build_depend>
-
-  <build_depend>libboost-date-time-dev</build_depend>
-  <build_depend>libboost-thread-dev</build_depend>
-  <build_depend>message_generation</build_depend>
-  <build_depend>rosconsole</build_depend>
-  <build_depend>roscpp_serialization</build_depend>
-  <build_depend>rostime</build_depend>
-
-
-  <exec_depend>libqt5-core</exec_depend>
-  <exec_depend>libqt5-gui</exec_depend>
-  <exec_depend>libqt5-widgets</exec_depend>
+  <depend>qtbase5-dev</depend>
+  <depend>libboost-date-time-dev</depend>
+  <depend>libboost-thread-dev</depend>
+  <depend>message_generation</depend>
+  <depend>rosconsole</depend>
+  <depend>roscpp_serialization</depend>
+  <depend>rostime</depend>
+  <depend>libqt5-core</depend>
+  <depend>libqt5-gui</depend>
+  <depend>libqt5-widgets</depend>
 
 
 
