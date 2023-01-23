@@ -24,25 +24,40 @@
 
 #include <QApplication>
 #include <QIcon>
-#include "hello_gui.h"
+#include <template_gui_package/hello_gui.h>
+#include <rclcpp/duration.hpp>
 
+#include "rclcpp/rclcpp.hpp"
+
+
+using namespace std::chrono_literals;
+
+class QApplicationNode: public rclcpp::Node{
+public:
+  QApplicationNode(int &argc, char **argv)
+    : Node("qapplication_node"),
+      app_(argc, argv)
+  {
+    timer_ = this->create_wall_timer(
+          1ms, std::bind(&QApplicationNode::timer_callback, this));
+  }
+private:
+  void timer_callback(){
+    app_.processEvents();
+  }
+  QApplication app_;
+  rclcpp::TimerBase::SharedPtr timer_;
+
+};
 
 int main(int argc, char *argv[])
 {
+  rclcpp::init(argc, argv);
+  auto app = std::make_shared<QApplicationNode>(argc,argv);
+  auto w   = std::make_shared<HelloGui>();
 
-  ros::init(argc, argv, "hello_gui_node",ros::init_options::AnonymousName);
-  QApplication a(argc, argv);
-
-  HelloGui w;
-
-  // set the window title as the node name
-  w.setWindowTitle(QString::fromStdString(
-                       ros::this_node::getName()));
-
-  // load the icon from our qrc file and set it as the application icon
-  QIcon icon(":/icons/my_gui_icon.png");
-  w.setWindowIcon(icon);
-
-  w.show();
-  return a.exec();
+  rclcpp::executors::SingleThreadedExecutor exec;
+  exec.add_node(app);
+  exec.add_node(w);
+  exec.spin();
 }

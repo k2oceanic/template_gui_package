@@ -26,22 +26,22 @@
 #define HELLO_GUI_H
 
 #include <QWidget>
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <qtimer.h>
-#include <std_msgs/String.h>
+#include <std_msgs/msg/string.hpp>
 
 namespace Ui {
 class HelloGui;
 }
 
-class HelloGui : public QWidget
+class HelloGui : public QWidget, public rclcpp::Node
 {
   Q_OBJECT
 
 public:
   explicit HelloGui(QWidget *parent = nullptr);
   ~HelloGui();
-  void chatterCallback(const std_msgs::String::ConstPtr& msg);
+  void chatterCallback(const std_msgs::msg::String::SharedPtr msg);
 
 public slots:
   void spinOnce();
@@ -51,11 +51,11 @@ private slots:
 
 private:
   Ui::HelloGui *ui;
-  QTimer *ros_timer;
+  //QTimer *ros_timer;
 
-  ros::NodeHandlePtr nh_;
-  ros::Subscriber chatter_sub_;
-  ros::Publisher  hello_pub_;
+  //ros::NodeHandlePtr nh_;
+  //ros::Subscriber chatter_sub_;
+  //ros::Publisher  hello_pub_;
 };
 
 #endif // HELLO_GUI_H
