@@ -34,7 +34,7 @@ namespace Ui {
 class HelloGui;
 }
 
-class HelloGui : public QWidget, public rclcpp::Node
+class HelloGui : public QWidget
 {
   Q_OBJECT
 
@@ -43,6 +43,7 @@ public:
   ~HelloGui();
   void chatterCallback(const std_msgs::msg::String::SharedPtr msg);
 
+  rclcpp::Node::SharedPtr node_;
 public slots:
   void spinOnce();
 
@@ -51,11 +52,12 @@ private slots:
 
 private:
   Ui::HelloGui *ui;
-  //QTimer *ros_timer;
+  rclcpp::Executor::SharedPtr exec_;
+  QTimer *ros_timer;
 
   //ros::NodeHandlePtr nh_;
-  //ros::Subscriber chatter_sub_;
-  //ros::Publisher  hello_pub_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr chatter_sub_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr  hello_pub_;
 };
 
 #endif // HELLO_GUI_H

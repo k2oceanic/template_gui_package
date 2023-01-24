@@ -28,44 +28,50 @@
 
 HelloGui::HelloGui(QWidget *parent) :
   QWidget(parent),
-  ui(new Ui::HelloGui),
-  Node("hello_gui")
+  ui(new Ui::HelloGui)
+  //node_("hello_gui")
 {
   ui->setupUi(this);
 
-  //nh_.reset(new ros::NodeHandle("~"));
+  using std::placeholders::_1;
+
+  // instantiate the node
+  node_ = std::make_shared<rclcpp::Node>("hello_gui");
+
+  // create publisher
+  node_->declare_parameter("chatter_topic", "~/chatter");
+  std::string listen_topic = node_->get_parameter("chatter_topic").get_parameter_value().get<std::string>();
+  hello_pub_ = node_->create_publisher<std_msgs::msg::String>(listen_topic, 10);
+
+  // create subscriber
+  node_->declare_parameter("hello_topic", "~/chatter");
+  std::string hello_topic = node_->get_parameter("hello_topic").get_parameter_value().get<std::string>();
+  chatter_sub_ = node_->create_subscription<std_msgs::msg::String>(
+        hello_topic, 1, std::bind(&HelloGui::chatterCallback, this, _1));
 
   // setup the timer that will signal ros stuff to happen
-//  ros_timer = new QTimer(this);
-//  connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
-//  ros_timer->start(100);  // set the rate to 100ms  You can change this if you want to increase/decrease update rate
+  ros_timer = new QTimer(this);
+  connect(ros_timer, SIGNAL(timeout()), this, SLOT(spinOnce()));
+  ros_timer->start(10);  // set the rate to 10ms  You can change this if you want to increase/decrease update rate
 
-
-  // setup subscriber by according to the ~/chatter_topic param
-  //std::string listen_topic;
-  //nh_->param<std::string>("listen_topic",listen_topic,"/talker/chatter");
-  //chatter_sub_ = nh_->subscribe<std_msgs::String>(listen_topic, 1, &HelloGui::chatterCallback, this);
-
-  // publish a message on the channel specified by ~/hello_topic param
-  //std::string hello_topic;
-  //nh_->param<std::string>("hello_topic",hello_topic,"chatter");
-  //hello_pub_ = nh_->advertise<std_msgs::String>(hello_topic,1);
+  // tell the window to display itself
   this->show();
 }
 
 HelloGui::~HelloGui()
 {
   delete ui;
-//  delete ros_timer;
+  delete ros_timer;
 }
 
 
 void HelloGui::spinOnce(){
-//  if(ros::ok()){
-//    ros::spinOnce();
-//  }
-//  else
-//      QApplication::quit();
+  if(rclcpp::ok()){
+    rclcpp::spin_some(node_);
+  }
+  else{
+    QApplication::quit();
+  }
 }
 
 
@@ -77,12 +83,12 @@ void HelloGui::chatterCallback(const std_msgs::msg::String::SharedPtr msg){
 
 void HelloGui::on_hi_button_clicked()
 {
-//  std_msgs::String msg;
-//  std::stringstream ss;
-//  ss << "hello world " << ui->hi_num->value();
-//  msg.data = ss.str();
+  std_msgs::msg::String msg;
+  std::stringstream ss;
+  ss << "hello world " << ui->hi_num->value();
+  msg.data = ss.str();
 
-//  hello_pub_.publish(msg);
+  hello_pub_->publish(msg);
 
-//  ui->hi_num->setValue(ui->hi_num->value()+1);
+  ui->hi_num->setValue(ui->hi_num->value()+1);
 }
